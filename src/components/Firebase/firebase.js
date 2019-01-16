@@ -24,16 +24,15 @@ class Firebase {
 
     onAuthUserListener = (next, fallback) =>
         this.auth.onAuthStateChanged(authUser => {
-            console.log('onAuthUserListener', authUser)
-            if (authUser) {
-                const authUserInfo = {
-                    uid: authUser.uid,
-                    email: authUser.email,
-                };
-                next(authUserInfo);
-            } else {
+            if (!authUser) {
                 fallback();
             }
+
+            const authUserInfo = {
+                uid: authUser.uid,
+                email: authUser.email,
+            };
+            next(authUserInfo);
         });
 }
 

@@ -19,11 +19,10 @@ class SignInGoogleBase extends Component {
     this.state = { error: null };
   }
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     this.props.firebase
       .doSignInWithGoogle()
       .then(socialAuthUser => {
-        console.log('soci;', socialAuthUser);
         this.setState({ error: null });
         this.props.history.push(ROUTES.HOME);
       })
