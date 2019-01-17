@@ -26,13 +26,13 @@ class Firebase {
         this.auth.onAuthStateChanged(authUser => {
             if (!authUser) {
                 fallback();
+            } else {
+                const authUserInfo = {
+                    uid: authUser.uid,
+                    email: authUser.email,
+                };
+                next(authUserInfo);
             }
-
-            const authUserInfo = {
-                uid: authUser.uid,
-                email: authUser.email,
-            };
-            next(authUserInfo);
         });
 }
 
