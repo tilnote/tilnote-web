@@ -1,6 +1,7 @@
 import React from 'react';
+import { inject } from 'mobx-react';
+import { compose } from 'recompose';
 
-import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
 
 const withAuthentication = Component => {
@@ -9,20 +10,20 @@ const withAuthentication = Component => {
         constructor(props) {
             super(props);
 
-            this.state = {
-                authUser: JSON.parse(localStorage.getItem('notilAuthUser'))
-            };
+            this.props.sessionStore.setAuthUser(
+                JSON.parse(localStorage.getItem('notilAuthUser')),
+            );
         }
 
         componentDidMount() {
             this.listener = this.props.firebase.onAuthUserListener(
                 authUser => {
                     localStorage.setItem('notilAuthUser', JSON.stringify(authUser));
-                    this.setState({ authUser });
+                    this.props.sessionStore.setAuthUser(authUser);
                 },
                 () => {
                     localStorage.removeItem('notilAuthUser');
-                    this.setState({ authUser: null });
+                    this.props.sessionStore.setAuthUser(null);
                 },
             );
         }
@@ -33,14 +34,15 @@ const withAuthentication = Component => {
 
         render() {
             return (
-                <AuthUserContext.Provider value={this.state.authUser}>
-                    <Component {...this.props} />
-                </AuthUserContext.Provider>
+                <Component {...this.props} />
             );
         }
     }
 
-    return withFirebase(WithAuthentication);
+    return compose(
+        withFirebase,
+        inject('sessionStore'),
+    )(WithAuthentication);
 };
 
 export default withAuthentication;
