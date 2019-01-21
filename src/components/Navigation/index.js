@@ -13,7 +13,7 @@ const Navigation = ({ sessionStore }) => (
         <NavigationNonAuth />
 );
 
-const NavigationAuth = ({ authUser }) => (
+const NavigationAuth = () => (
     <ul>
         <li>
             <Link to={ROUTES.LANDING}>Landing</Link>
@@ -41,4 +41,4 @@ const NavigationNonAuth = () => (
 export default compose(
     inject('sessionStore'),
     observer,
-  )(Navigation);
+)(Navigation);
