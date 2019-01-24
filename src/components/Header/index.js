@@ -5,6 +5,7 @@ const Header = () => {
     const headerStyle = {
         padding: '0 1rem',
         borderBottom: 'solid 1px #eee',
+        background: 'white',
     };
 
     const containerStyle = {
