@@ -8,7 +8,7 @@ import HomePage from '../Home';
 import SignInPage from '../SignIn';
 
 import * as ROUTES from '../../constants/routes';
-import { withAuthentication } from '../Session';
+import { withAuthentication } from '../../contexts/Session';
 
 const App = () => (
     <Router>
