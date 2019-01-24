@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import CategoryDropDown from '../CategoryDropDown';
 
 const subHeaderStyle = {
     padding: '0 1rem',
@@ -14,7 +15,7 @@ const containerStyle = {
     height: 40
 };
 
-class SubHeader extends React.Component {
+class SubHeader extends Component {
 
     componentDidMount() {
     }
@@ -26,7 +27,7 @@ class SubHeader extends React.Component {
         return (
             <div style={subHeaderStyle}>
                 <div style={containerStyle}>
-                    <span>All</span>
+                    <CategoryDropDown />
                     <span>New note</span>
                 </div>
             </div>

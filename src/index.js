@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 
+import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
