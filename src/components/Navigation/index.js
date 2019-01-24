@@ -1,23 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
+import { compose } from 'recompose';
 
-import { AuthUserContext } from '../Session';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
-const Navigation = () => (
-    <AuthUserContext.Consumer>
-        {authUser =>
-            authUser ?
-                <NavigationAuth authUser={authUser} />
-                :
-                <NavigationNonAuth />
-
-        }
-    </AuthUserContext.Consumer>
+const Navigation = ({ sessionStore }) => (
+    sessionStore.authUser ?
+        <NavigationAuth authUser={sessionStore.authUser} />
+        :
+        <NavigationNonAuth />
 );
 
-const NavigationAuth = ({ authUser }) => (
+const NavigationAuth = () => (
     <ul>
         <li>
             <Link to={ROUTES.LANDING}>Landing</Link>
@@ -42,4 +38,7 @@ const NavigationNonAuth = () => (
     </ul>
 );
 
-export default Navigation;
+export default compose(
+    inject('sessionStore'),
+    observer,
+)(Navigation);
