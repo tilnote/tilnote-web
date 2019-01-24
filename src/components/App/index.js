@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from '../Header';
+import SubHeader from '../SubHeader';
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
 import HomePage from '../Home';
@@ -14,6 +15,7 @@ const App = () => (
     <Router>
         <div>
             <Header />
+            <SubHeader />
             {/* TODO: delete below Navigation */}
             <Navigation />
 
