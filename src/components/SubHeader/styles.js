@@ -1,8 +1,8 @@
 export const subHeaderStyle = {
     padding: '0 1rem',
     borderBottom: 'solid 1px #eee',
-    boxShadow: '0 1px 2px 0px #D6D6D6',
-        background: 'white',
+    boxShadow: '0px 4px 4px -5px #777',
+    background: 'white',
 };
 
 export const containerStyle = {
