@@ -7,16 +7,18 @@ import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
 const Navigation = ({ sessionStore }) => (
-    sessionStore.authUser ?
-        <NavigationAuth authUser={sessionStore.authUser} />
-        :
-        <NavigationNonAuth />
+    sessionStore.authUser
+        ? <NavigationAuth authUser={sessionStore.authUser} />
+        : <NavigationNonAuth />
 );
 
 const NavigationAuth = () => (
     <ul>
         <li>
             <Link to={ROUTES.LANDING}>Landing</Link>
+        </li>
+        <li>
+            <Link to={ROUTES.HOME}>Home</Link>
         </li>
         <li>
             <Link to={ROUTES.HOME}>Home</Link>

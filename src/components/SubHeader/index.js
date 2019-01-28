@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
 import { Dropdown, Button, Icon } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom';
+
 import * as styles from './styles';
 
 class SubHeader extends Component {
 
-    constructor(props) {
-        super(props);
-        console.log(props)
-    }
     render() {
         return (
             <div style={styles.subHeaderStyle}>
                 <div style={styles.containerStyle}>
-                    <CategoryDropDown />
+                    <CategoryDropDown location={this.props.location} />
                     <WriteButton />
                 </div>
             </div>
@@ -25,8 +22,9 @@ class CategoryDropDown extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            path: 'All',
+            path: this.getLastPath(props.location.pathname),
             categories: [{
                 id: 'all',
                 text: 'All',
@@ -43,17 +41,21 @@ class CategoryDropDown extends Component {
         }
     }
 
+    getLastPath = (pathname) => {
+        return pathname.split('/').pop();
+    }
+
     setPath = (path) => {
         this.setState({ path });
     }
 
     render() {
         return (
-            <Dropdown text={this.state.path}>
+            <Dropdown text={this.state.path} style={{textTransform: 'capitalize'}}>
                 <Dropdown.Menu>
                     {this.state.categories.slice()
                         .map(item =>
-                            <Dropdown.Item 
+                            <Dropdown.Item
                                 key={item.id} text={item.text} onClick={item.onClick}
                                 as={NavLink} to={{ pathname: `/notes/${item.id}` }}
                             />
@@ -73,12 +75,12 @@ class WriteButton extends Component {
     render() {
         return (
             <Button style={styles.buttonStyle} icon onClick={this.doTest}>
-                <Icon name='write' size='large' />
+                <Icon name='write square' size='large' />
             </Button>
         )
     }
 }
 
-export default SubHeader;
+export default withRouter(SubHeader);
 export { CategoryDropDown, WriteButton }
 

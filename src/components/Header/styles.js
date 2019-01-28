@@ -1,7 +1,6 @@
-export const subHeaderStyle = {
+export const headerStyle = {
     padding: '0 1rem',
     borderBottom: 'solid 1px #eee',
-    boxShadow: '0px 4px 4px -5px #777',
     background: 'white',
 };
 
@@ -10,7 +9,7 @@ export const containerStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 40
+    height: 50
 };
 
 export const buttonStyle = {

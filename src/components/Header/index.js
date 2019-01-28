@@ -1,29 +1,17 @@
 import React from 'react';
+import { Button, Icon } from 'semantic-ui-react'
 
-const Header = () => {
+import * as styles from './styles';
 
-    const headerStyle = {
-        padding: '0 1rem',
-        borderBottom: 'solid 1px #eee',
-        background: 'white',
-    };
-
-    const containerStyle = {
-        margin: '0 auto',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        height: 50
-    };
-
-    return (
-        <header style={headerStyle}>
-            <div style={containerStyle}>
-                <span>tilnote</span>
-                <span>Hamburger</span>
-            </div>
-        </header>
-    )
-};
+const Header = () => (
+    <header style={styles.headerStyle}>
+        <div style={styles.containerStyle}>
+            <span><strong>TILNote</strong></span>
+            <Button style={styles.buttonStyle} icon>
+                <Icon name='bars' size='large' />
+            </Button>
+        </div>
+    </header>
+)
 
 export default Header;
