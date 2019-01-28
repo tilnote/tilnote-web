@@ -75,7 +75,7 @@ class WriteButton extends Component {
     render() {
         return (
             <Button style={styles.buttonStyle} icon onClick={this.doTest}>
-                <Icon name='write' size='large' />
+                <Icon name='write square' size='large' />
             </Button>
         )
     }
