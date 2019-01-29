@@ -9,9 +9,14 @@ export const containerStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 50
+    height: 50,
 };
 
 export const buttonStyle = {
     background: 'none'
 };
+
+export const logoStyle = {
+    fontFamily: 'Audio wide',
+    fontSize: '1.2rem'
+}

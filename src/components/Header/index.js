@@ -6,7 +6,7 @@ import * as styles from './styles';
 const Header = () => (
     <header style={styles.headerStyle}>
         <div style={styles.containerStyle}>
-            <span><strong>TILNote</strong></span>
+            <span style={styles.logoStyle}>TILNote</span>
             <Button style={styles.buttonStyle} icon>
                 <Icon name='bars' size='large' />
             </Button>
